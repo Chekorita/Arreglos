@@ -12,7 +12,6 @@ public class App {
     public static void main( String[] args ) {
 
         Map<String,String> env = System.getenv();
-        Set<String> keys = env.keySet();
 
         int port = Integer.parseInt(env.get("PORT"));
     	port(port);
