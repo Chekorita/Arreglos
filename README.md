@@ -6,3 +6,30 @@ _La página es un pequeño sistema para ofrecer los servicios de una diseñadora
 # ¿Como puedo visualizarla?
 _Solo sigue al siguiente enlace_
 **https://colleage.herokuapp.com/**
+
+# ¿Como puedo compilarla yo?
+_El procedimiento es sencillo, solo te hubicas en el directorio donde
+_Guardarás el proyecto y lo clonas con el siguiente comando:_
+
+```
+git clone https://github.com/Chekorita/Arreglos
+```
+_Luego te hubicas en el directorio que se acaba de crear_
+
+```
+cd Arreglos
+```
+
+_Y ejecutas el siguiente comando para compilar y correr_
+
+_En windows es:_
+
+```
+cls && mvn compile && mvn exec:java -D"exec.mainClass"="App"
+```
+
+_En linux sería:_
+
+```
+cls && mvn compile && mvn exec:java -D"exec.mainClass"="App"
+```
