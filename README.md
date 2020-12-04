@@ -7,6 +7,12 @@ _La página es un pequeño sistema para ofrecer los servicios de una diseñadora
 _Solo sigue al siguiente enlace_
 **https://colleage.herokuapp.com/**
 
+# Pre-requisitos
+```
+Maven instalado en el sisema
+Java jdk >= 1.8
+``` 
+
 # ¿Como puedo compilarla yo?
 _El procedimiento es sencillo, solo te hubicas en el directorio donde
 Guardarás el proyecto y lo clonas con el siguiente comando:_
