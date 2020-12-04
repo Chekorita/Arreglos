@@ -14,13 +14,13 @@ Guardarás el proyecto y lo clonas con el siguiente comando:_
 ```
 git clone https://github.com/Chekorita/Arreglos
 ```
-_Luego te hubicas en el directorio que se acaba de crear_
+_Luego te hubicas en el directorio que se acaba de crear:_
 
 ```
 cd Arreglos
 ```
 
-_Y ejecutas el siguiente comando para compilar y correr_
+_Y ejecutas el siguiente comando para compilar y correr._
 
 _En windows es:_
 
@@ -31,5 +31,5 @@ cls && mvn compile && mvn exec:java -D"exec.mainClass"="App"
 _En linux sería:_
 
 ```
-cls && mvn compile && mvn exec:java -D"exec.mainClass"="App"
+clear && mvn compile && mvn exec:java -D"exec.mainClass"="App"
 ```
