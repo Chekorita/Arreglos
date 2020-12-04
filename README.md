@@ -20,16 +20,8 @@ _Luego te hubicas en el directorio que se acaba de crear:_
 cd Arreglos
 ```
 
-_Y ejecutas el siguiente comando para compilar y correr._
-
-_En windows es:_
+_Y ejecutas el siguiente comando para compilar y correr:_
 
 ```
-cls && mvn compile && mvn exec:java -D"exec.mainClass"="App"
-```
-
-_En linux sería:_
-
-```
-clear && mvn compile && mvn exec:java -D"exec.mainClass"="App"
+mvn exec:java -D"exec.mainClass"="App"
 ```
