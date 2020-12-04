@@ -9,8 +9,8 @@ _Solo sigue al siguiente enlace_
 
 # Pre-requisitos
 ```
-Maven instalado en el sisema
-Java jdk >= 1.8
+- Maven >= 3.6.0
+- Java jdk >= 1.8
 ``` 
 
 # ¿Como puedo compilarla yo?
