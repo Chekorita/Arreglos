@@ -1,6 +1,6 @@
 # Proyecto de pagina
-_Este proyecto es para la materia de Sistemas Operativos._
-_Su objetivo es mas que nada educativo puesto que nos ayudará a practicar el desarrollo de paginas y sistemas web_
+_Este proyecto es para la materia de Sistemas Operativos.
+Su objetivo es mas que nada educativo puesto que nos ayudará a practicar el desarrollo de paginas y sistemas web
 _La página es un pequeño sistema para ofrecer los servicios de una diseñadora de decoraciones_
 
 # ¿Como puedo visualizarla?
@@ -9,7 +9,7 @@ _Solo sigue al siguiente enlace_
 
 # ¿Como puedo compilarla yo?
 _El procedimiento es sencillo, solo te hubicas en el directorio donde
-_Guardarás el proyecto y lo clonas con el siguiente comando:_
+Guardarás el proyecto y lo clonas con el siguiente comando:_
 
 ```
 git clone https://github.com/Chekorita/Arreglos
