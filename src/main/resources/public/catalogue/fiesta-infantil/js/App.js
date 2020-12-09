@@ -54,17 +54,11 @@ window.addEventListener('load', () => {
 
 				let shoppingCart = document.querySelector('.shopping');
 
+				let productName = elem.querySelector('.title-wraper > span').textContent;
 				let originalPrice = parseInt(priceContainer.getAttribute('title'));
 				let mount = parseInt(output.value);
-				
-				let item = {
-					name: elem.querySelector('.title-wraper > span').textContent,
-					cost: originalPrice,
-					amount: mount,
-					total: originalPrice * mount 
-				};
 
-				addedItems.push(item);
+				addItems(productName, originalPrice, mount);
 
 				priceContainer.textContent = `$${ originalPrice } MX`;
 				output.value="1";
@@ -73,6 +67,8 @@ window.addEventListener('load', () => {
 
 				sendBtn.firstElementChild.textContent = "Added";
 
+				console.log(addedItems);
+				
 				setTimeout(() => {
 					sendBtn.firstElementChild.textContent = "Add"					
 				}, 1000);
@@ -80,6 +76,7 @@ window.addEventListener('load', () => {
 		});
 	}
 
+	// Cargar items en su contenedor
 	const loadItems = () => {
 		getItems().then( (res) => {
 
@@ -141,14 +138,59 @@ window.addEventListener('load', () => {
 
 	/* Funciones variadas */
 
+	// Agregar o sumar a los items
+	function addItems(productName, originalPrice, mount) {
+
+		let index = -1;
+
+		console.log(typeof mount)
+		console.log("hola: " + originalPrice*mount);
+
+		for(let i = 0; i < addedItems.length; i++) {
+			if(addedItems[i].name === productName) {
+				index = i;
+			}
+		}  
+
+		console.log(index);
+
+		if(index < 0) {
+			let item = {
+				name: productName,
+				cost: originalPrice,
+				amount: mount,
+				total: originalPrice*mount 
+			};
+
+			addedItems.push(item);
+		}
+		else {
+			addedItems[index].amount = addedItems[index].amount+mount;
+			console.log("adios" + addedItems[index].cost*addedItems[index].amount);
+			addedItems[index].total = addedItems[index].cost*addedItems[index].amount;
+		}
+	}
+
 	// Funcion para recuperar objetos
 	function getItems() {
 		return fetch("/kids-party-items").then((res) => res.json());
-	}	
+	}
+
+	// Función para retornar el costo del total a pagar
+	function getTotal() {
+		
+		let allPricesInCart = addedItems.map( item => item.total );
+		
+		let total = allPricesInCart.reduce((prev, curr) => {
+			return prev + curr;
+		}, 0);
+
+		return total;
+	}
 
 	/* Plantillas */
 
-	// Plantilla de la tarjeta de objeto
+	// Plantilla de la tarjeta de los items
 	function itemCardTemplate(data) {
 		return `
 			<div class="item-card">
@@ -183,23 +225,64 @@ window.addEventListener('load', () => {
 		`;
 	}
 
+	// Plantilla de la pantalla de compra
 	function shoppingScreenTemplate() {
 		return `
 			<div class="shopping-screen">
 				<header class="shopping-screen">
 					<div class="close-icon default-cursor">
-						<span class="material-icons md-36 md-dark">clear</span>
-					</div>
-					<div class="table-wraper">
-						<div class="table-container"></div>
-						<div class="buy-btn-wraper">
-							<div class="buy-btn">
-								buy
-							</div>
-						</div>
+						<span class="material-icons md-38 md-dark">clear</span>
 					</div>
 				</header>
+				${
+					addedItems.length === 0 ? nothingToBuyTemplate(): buyingBoardTemplate()
+				}
 			</div>
 		`;
 	}
+
+	// Plantilla que se muestra si no hay items en el carrito
+	function nothingToBuyTemplate() {
+		return `
+			<div class="sorry-screen flex-center">
+				Lo sentimos, aun no hay nada en tu carrito :(
+			</div>
+		`;
+	}
+
+	// Plantilla que se muestra cuando hay items en el carrito
+	function buyingBoardTemplate() {
+
+		let addedCards = addedItems.map( item => boughtItemCard(item));
+
+		return `
+			<div class="table-wraper">
+				<div class="table-container">${ addedCards.join("") }</div>
+			</div>
+			<div class="buy-wraper">
+				<div class="total-wraper">
+					<span>Total: $${ getTotal() }</span>
+				</div>
+				<div class="buy-btn-wraper">
+					<div class="buy-btn">Comprar</div>
+				</div>
+			</div>
+		`;
+	}
+
+	function boughtItemCard(item) {
+		return `
+			<div class="bought-card">
+				<div class="">
+					<div class="title-wraper flex-center">
+						<span>${ item.name }</span>
+					</div>
+					<div class="price-wraper flex-center">
+						<span>Total: $${ item.total } MX</span>
+					</div>
+				</div>
+			</div>
+		`;
+	}
+
 });
