@@ -29,5 +29,5 @@ cd Arreglos
 _Y ejecutas el siguiente comando para compilar y correr:_
 
 ```
-mvn exec:java -D"exec.mainClass"="App"
+mvn compile && mvn exec:java -D"exec.mainClass"="App" 
 ```
