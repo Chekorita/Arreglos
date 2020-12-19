@@ -6,7 +6,8 @@ import static spark.Spark.*;
 import Services.ShopItemService;
 
 public class ShopItemController {
-
+	//este metodo enviara una señal para recuperar los items segun el catalogo que entremos
+	//segun el catalogo es la coleccion que se cargara en el objeto shopItemService
 	public ShopItemController(final ShopItemService shopItemService) {
 
 		get("/kids-party-items", (req, res) -> shopItemService.getAllShopItems("Fiesta Infantil"), json());

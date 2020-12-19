@@ -38,7 +38,7 @@ const main = () => {
 		then(res => res.json());
 	}
 
-	/*Plantillas*/
+	/*Plantillas haciendo uso de lo retornado por la coleccion de Eventos*/
 	function cardTemplate (data) {
 
 		let side = data.position%2 === 0 ? "right": "left";

@@ -1,7 +1,7 @@
 package Objects;
 
 public class ShopItem {
-
+	//esta clase es referente a la informacion que se tiene almacenado de los productos
 	private String id = "";
 	private String name = "";
 	private String type = "";
