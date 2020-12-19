@@ -21,14 +21,14 @@ public class ShopItemService {
 
         Mongo conn = new Mongo();
 		String data = "";
-        
+        //hacemos una conexion a nuestra base de datos con ayuda del metodo
         conn.connect();
         
         // Buscando la coleccion en mongo y obtener sus documentos
         MongoCollection<Document> collection = conn.getCollection(collectionName);
         FindIterable<Document> result = collection.find();
         
-        // Seteando los resultados en la lista de items
+        // Seteando los resultados en la lista de items de nuestro catalogo
         for(Document doc: result) {
 
             ShopItem item = new ShopItem();
@@ -43,7 +43,7 @@ public class ShopItemService {
 
             items.add(item);
         }
-
+	//cerramos la conexion y retornamos los items
         conn.disconnect();
 
 	   return items;

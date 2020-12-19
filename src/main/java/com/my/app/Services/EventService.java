@@ -14,17 +14,17 @@ import com.mongodb.client.FindIterable;
 public class EventService {
 
 	public List<Event> getAllEvents() {
-
+	//se crea una lista de tipo Event
         List<Event> events = new ArrayList<Event>();
-
+	
         Mongo conn = new Mongo();
 		String data = "";
-        
+        //abriremos una conexion a la base de datos
         conn.connect();
-        
+        //mandamos a llamar la coleccion de nuestra base de datos llamada Eventos
         MongoCollection<Document> collection = conn.getCollection("Eventos");
         FindIterable<Document> result = collection.find();
-        
+        //de los documentos recuperados vamos a extraer los que esten dentro, que contiene infromacion para la apgina Desings
         for(Document doc: result) {
 
             Event event = new Event();
@@ -39,7 +39,7 @@ public class EventService {
         }
 
         conn.disconnect();
-
+	//cerramos conexion y retornamos los resultados
 	   return events;
     }
 }

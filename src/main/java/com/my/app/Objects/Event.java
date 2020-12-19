@@ -1,7 +1,7 @@
 package Objects;
 
 public class Event {
-	
+	//Clase para la infomacion de los catalogos presentes (Como el de XV)
 	private String id;
 	private String text;
 	private String src;
